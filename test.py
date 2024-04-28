@@ -31,7 +31,7 @@ def jsonFile():
 @app.route('/FileMgs/music/<file_id>')
 def FileMgs(file_id):
     file_name=idToFileName(file_id[:-4])
-    return send_file("./FileMgs/"+file_name)
+    return send_file("./FileMgs/music/"+file_name)
 
 @app.route('/uploader',methods=['GET','POST'])
 def uploader():
