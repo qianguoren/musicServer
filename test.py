@@ -24,6 +24,10 @@ def idToFileName(id):
 def hello_world():
     abort(404)
 
+@app.route('/FileMgs/555.json')
+def jsonFile():
+    return send_file("./FileMgs/music/555.json")
+
 @app.route('/FileMgs/<file_id>')
 def FileMgs(file_id):
     file_name=idToFileName(file_id)
