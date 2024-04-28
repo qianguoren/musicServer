@@ -28,7 +28,7 @@ def hello_world():
 def jsonFile():
     return send_file("./FileMgs/music_info/555.json")
 
-@app.route('/FileMgs/<file_id>')
+@app.route('/FileMgs/music/<file_id>')
 def FileMgs(file_id):
     file_name=idToFileName(file_id[:-4])
     return send_file("./FileMgs/"+file_name)
