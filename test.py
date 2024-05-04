@@ -1,6 +1,6 @@
 
 import os,json
-from flask import Flask,send_file,request,send_from_directory
+from flask import Flask,send_file,request,send_from_directory,redirect
 from werkzeug.utils import secure_filename
 from module.musicInfoModule import musicInfoList
 from flask_cors import CORS
@@ -25,9 +25,14 @@ def idToFileName(id):
     for i in MusicList:
         if i['id']==int(id):
             return i['name']
+        
+@app.route('/')
+def index():
+    url = "/index.html"
+    return redirect(url)
 
 @app.route('/<path:filename>')
-def hello_world(filename):
+def main(filename):
     print(filename)
     return send_from_directory("./www/",filename, as_attachment=False)
 
