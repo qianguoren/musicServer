@@ -53,7 +53,7 @@ def addSongs():
     print(songId)
     mil.insertExtraTracksInfo(songId)
     # mil.delSongs(songList)
-    # mil.saveJsonFile()
+    mil.saveJsonFile()
     # print(mil.list)
     return '{"state":"ok"}'
 
