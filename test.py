@@ -3,10 +3,13 @@ import os,json
 from flask import Flask,send_file,abort,jsonify,request
 from werkzeug.utils import secure_filename
 from module.musicInfoModule import musicInfoList
+from flask_cors import CORS
+
 
 mil=musicInfoList()
 
 app = Flask(__name__)
+CORS(app)
 
 html404="""
         <!doctype html>
