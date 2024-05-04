@@ -39,9 +39,11 @@ def FileMgs(file_id):
 @app.route('/delSongs',methods=['POST'])
 def delSongs():
     data = json.loads(request.data)
-    songList=data['id']
+    songList=data['delId']
     mil.delSongs(songList)
-    print(mil.list)
+    mil.saveJsonFile()
+    # print(mil.list)
+    return '{"state":"ok"}'
 
 @app.route('/uploader',methods=['GET','POST'])
 def uploader():

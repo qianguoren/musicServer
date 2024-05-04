@@ -109,8 +109,10 @@ class musicInfoList:
         for id in infoList:
             for i in range(len(self.list['playlist']['tracks'])):
                 if self.list['playlist']['tracks'][i]['id'] == int(id):
-                    del self.list['playlist']['tracks'][i]['id']
-
+                    print("刪除",self.list['playlist']['tracks'][i])
+                    del self.list['playlist']['tracks'][i]
+                    break
+                    # print("debug2",self.list['playlist']['tracks'][i])
     def saveJsonFile(self):
         """
         保存曲目到555.json
