@@ -45,6 +45,18 @@ def delSongs():
     # print(mil.list)
     return '{"state":"ok"}'
 
+@app.route('/addSongs',methods=['POST'])
+def addSongs():
+    data = json.loads(request.data)
+    songId=data['id']
+
+    print(songId)
+    mil.insertExtraTracksInfo(songId)
+    # mil.delSongs(songList)
+    # mil.saveJsonFile()
+    # print(mil.list)
+    return '{"state":"ok"}'
+
 @app.route('/uploader',methods=['GET','POST'])
 def uploader():
     if request.method == 'POST':

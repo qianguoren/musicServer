@@ -105,6 +105,22 @@ class musicInfoList:
         self.list['playlist']['tracks'].extend(idList)
         # print(json.dumps(self.list,ensure_ascii=False))  
 
+    def insertExtraTracksInfo(self,idList):
+        """
+        使用id插入额外的歌曲信息到tracks里
+        idList:歌曲id的列表每次最大20个
+        """
+        print('开始使用id插入额外列表...')
+
+        r=self.songs(idList)
+        if r['code']==200:
+            self.list['playlist']['tracks'].extend(r['songs'])
+        else:
+            print('返回数据错误',r)
+        print("插入列表 : ",r['songs'])
+        
+        # print(json.dumps(self.list,ensure_ascii=False))  
+
     def delSongs(self,infoList):
         for id in infoList:
             for i in range(len(self.list['playlist']['tracks'])):
