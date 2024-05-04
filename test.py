@@ -1,6 +1,6 @@
 
 import os,json
-from flask import Flask,send_file,abort,jsonify,request
+from flask import Flask,send_file,request,send_from_directory
 from werkzeug.utils import secure_filename
 from module.musicInfoModule import musicInfoList
 from flask_cors import CORS
@@ -26,9 +26,10 @@ def idToFileName(id):
         if i['id']==int(id):
             return i['name']
 
-@app.route('/')
-def hello_world():
-    abort(404)
+@app.route('/<path:filename>')
+def hello_world(filename):
+    print(filename)
+    return send_from_directory("./www/",filename, as_attachment=False)
 
 @app.route('/FileMgs/555.json')
 def jsonFile():
