@@ -2,6 +2,9 @@
 import os,json
 from flask import Flask,send_file,abort,jsonify,request
 from werkzeug.utils import secure_filename
+from module.musicInfoModule import musicInfoList
+
+mil=musicInfoList()
 
 app = Flask(__name__)
 
@@ -32,6 +35,13 @@ def jsonFile():
 def FileMgs(file_id):
     file_name=idToFileName(file_id[:-4])
     return send_file("./FileMgs/music/"+file_name)
+
+@app.route('/delSongs',methods=['POST'])
+def delSongs():
+    data = json.loads(request.data)
+    songList=data['id']
+    mil.delSongs(songList)
+    print(mil.list)
 
 @app.route('/uploader',methods=['GET','POST'])
 def uploader():
